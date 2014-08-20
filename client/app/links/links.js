@@ -1,5 +1,10 @@
 angular.module('shortly.links', [])
 
 .controller('LinksController', function ($scope, Links) {
-  // Your code here
+  $scope.data = {};
+  $scope.name = 'Chris'
+  $scope.getLinks = function(){};
+  $scope.changeName = function(){
+    $scope.name === 'Chris'? $scope.name = 'Jon': $scope.name = 'Chris';
+  }
 });
