@@ -1,30 +1,26 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http, $location, $window) {
-  var getLinks = function(code){
-  var url = '/api/links/';
-  if ( code.code ) {
-    url += code.code;
-    return $http({
-      method: 'GET',
-      url: url,
-    }).success(function(data, status){
-      $window.location.assign(data);
-    }).error(function(data, status){
-      console.log(url, data, "err getting the data");
-    });
-  } else {
+  var getLinks = function(){
     return $http({
         method: 'GET',
-        url: url,
-        code: code
+        url: '/api/links',
       }).success(function(data, status){
-        console.log(data);
         return data;
       }).error(function(data, status){
         return "err getting the data";
       });
-    }
+  };
+  var redirectLink = function(code){
+    console.log('redirect fired', code);
+    return $http({
+      method: 'GET',
+      url: '/api/links/' + code,
+    }).success(function(data, status){
+      $window.location.assign(data);
+    }).error(function(data, status){
+      console.log('Error Fired');
+    });
   };
 
   var postLink = function(links) {
@@ -39,7 +35,8 @@ angular.module('shortly.services', [])
 
   return {
     allLinks: getLinks,
-    addLink: postLink
+    addLink: postLink,
+    redirectLink: redirectLink
   };
 })
 .factory('Auth', function ($http, $location, $window) {

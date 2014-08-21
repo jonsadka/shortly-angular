@@ -2,11 +2,11 @@
   <form action="#/shorten" method="get">
     <button>Shorten Links</button>
   </form>
-  <li ng-repeat="link in data.links"> {{ ::link.title }}
+  <li ng-repeat="link in data.links"> {{ link.title }}
     <br> {{ link.url }}
     <br>
-      <a href={{link.base_url}}/api/links/{{link.code}}>
-        {{link.base_url}}/api/links/{{link.code}}
+      <a href={{link.base_url}}/#{{link.code}}>
+        {{link.base_url}}/#{{link.code}}
       <a>
     <br> {{link.visits}} </li>
 </div>

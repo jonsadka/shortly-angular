@@ -1,6 +1,7 @@
 angular.module('shortly', [
   'shortly.services',
   'shortly.links',
+  // 'shortly.redirect',
   'shortly.shorten',
   'shortly.auth',
   'ngRoute'
