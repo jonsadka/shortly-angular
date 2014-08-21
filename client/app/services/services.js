@@ -1,17 +1,30 @@
 angular.module('shortly.services', [])
 
-.factory('Links', function ($http) {
+.factory('Links', function ($http, $location, $window) {
   var getLinks = function(code){
-  code = code || "";
-  return $http({
+  var url = '/api/links/';
+  if ( code.code ) {
+    url += code.code;
+    return $http({
       method: 'GET',
-      url: '/api/links/',
-      code: code
+      url: url,
     }).success(function(data, status){
-      return data;
+      $window.location.assign(data);
     }).error(function(data, status){
-      return "err getting the data";
+      console.log(url, data, "err getting the data");
     });
+  } else {
+    return $http({
+        method: 'GET',
+        url: url,
+        code: code
+      }).success(function(data, status){
+        console.log(data);
+        return data;
+      }).error(function(data, status){
+        return "err getting the data";
+      });
+    }
   };
 
   var postLink = function(links) {

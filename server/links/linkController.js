@@ -79,7 +79,7 @@ module.exports = {
       if (err) {
         next(err);
       } else {
-        res.redirect(savedLink.url);
+        res.send(savedLink.url);
       }
     });
   }
