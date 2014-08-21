@@ -1,3 +1,13 @@
 <div id='container'>
-  <!-- Your html here -->
+  <form action="#/shorten" method="get">
+    <button>Shorten Links</button>
+  </form>
+  <li ng-repeat="link in data.links"> {{ link.title }}
+    <br> {{ link.url }}
+    <br>
+      <a href={{link.base_url}}/#/links/#/{{link.code}}>
+        {{link.base_url}}/#/links/#/{{link.code}}
+      <a>
+    <br> {{link.visits}} </li>
 </div>
+

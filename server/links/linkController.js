@@ -63,6 +63,7 @@ module.exports = {
       })
       .then(function (createdLink) {
         if (createdLink) {
+          console.log(createdLink);
           res.json(createdLink);
         }
       })

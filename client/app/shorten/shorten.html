@@ -1,6 +1,13 @@
 <div id='container'>
-<!-- Your code here -->
-
+  <form action="#/link" method="get">
+    <button>See Links</button>
+  </form>
+  <form ng-submit="addLink()">
+    <input type='url' name='url' ng-model="link.url">
+    <input type='submit' value='Shorten'>
+    <div> {{link.url}}</div>
+  </form>
+  <li ng-repeat="link in data.links"> {{ link.title }} {{ link.link }} {{link.visits}} {{link.code}} {{link.base_url}} {{link.url}} </li>
 </div>
 
 
